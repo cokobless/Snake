@@ -1,8 +1,7 @@
 #include <stdio.h>
-//#include <16F877A.h>
-//#use delay (clock=4000000)
-//#fuses XT, PUT, NOWDT, NOPROTECT,NOBROWNOUT,NOCPD,NOWRT,NODEBUG
-alo?
+#include <16F877A.h>
+#use delay (clock=4000000)
+#fuses XT, PUT, NOWDT, NOPROTECT,NOBROWNOUT,NOCPD,NOWRT,NODEBUG
 int A1=1,A2=2,A3=3,A4=4,A5=5,A6=6,A7=7,A8=8;
 int B1=9,B2=10,B3=11,B4=12,B5=13,B6=14,B7=15,B8=16;
 int C1=17,C2=18,C3=19,C4=20,C5=21,C6=22,C7=23,C8=24;
@@ -58,7 +57,7 @@ void iniciar(snake matriz[8][8]){
       }
    }
 }
-void imprimir(int mcc[8][8]){
+/*void imprimir(int mcc[8][8]){
    int i,j,x;
    for(i=0;i<8;i++){
       for(j=0;j<8;j++){
@@ -67,7 +66,7 @@ void imprimir(int mcc[8][8]){
       }
       printf("\n");
    }
-}
+}*/
 
 snake posicion(sanke matriz[8][8]){
    int i,j;
@@ -82,6 +81,17 @@ snake posicion(sanke matriz[8][8]){
    }
    return head;
 }
+void prender(snake matriz[8][8]){
+      int i,j,x,y;
+      for(i=0;i<8;i++){
+         for(j=0;j<8;j++){
+            if(matriz[i][j].estado==1){
+               output_high(Pin_Ci);// no se si esta wea funciona y si no lo puedo compilar, no lo puedo revisar :/
+               output_low(Pin_Dj);
+            }
+         }
+      }
+}
 
 void mover_derecha(snake matriz[8][8]){
    int i,j,x,y;
@@ -89,13 +99,14 @@ void mover_derecha(snake matriz[8][8]){
    cabeza = posicion(matriz[8][8]);
    x=cabeza.X-1;
    y=cabeza.Y-1:
-   for(i=0;i<8;i++){
-      for(j=0;j<8;j++){
-         
-      }
+   for(j=y;j<8;j++){
+      tmp=cabeza;
+      matriz[i][j+1]=tmp;
+      cabeza.tipo='B';
+      matriz[i][j-1].estado=0;
+      prender(matriz[8][8]);
    }
 }
-
 
 /*void prender(int posicion){
       int i,j,x,y;
