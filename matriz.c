@@ -18,9 +18,7 @@ typedef struct culebra{
    int estado;
 }snake;
 
-snake mcc[8][8];
-
-void comida(snake matriz[8][8]){
+/*void comida(snake matriz[8][8]){
    int i,j,x=0;
    while(x == 0){
       i=rand()%8;
@@ -30,7 +28,7 @@ void comida(snake matriz[8][8]){
          x = 1;
       }
    }
-}
+}*/
 
 void iniciar(snake matriz[8][8]){
    int i,j;
@@ -57,18 +55,19 @@ void iniciar(snake matriz[8][8]){
       }
    }
 }
-/*void imprimir(int mcc[8][8]){
+
+void imprimir(snake mcc[8][8]){
    int i,j,x;
    for(i=0;i<8;i++){
       for(j=0;j<8;j++){
-         x=mcc[i][j];
+         x=mcc[i][j].estado;
          printf("%d \t", x);
       }
       printf("\n");
    }
-}*/
+}
 
-snake posicion(sanke matriz[8][8]){
+/*snake posicion(sanke matriz[8][8]){
    int i,j;
    snake head;
    for(i=0;i<8;i++){
@@ -106,7 +105,7 @@ void mover_derecha(snake matriz[8][8]){
       matriz[i][j-1].estado=0;
       prender(matriz[8][8]);
    }
-}
+}*/
 
 /*void prender(int posicion){
       int i,j,x,y;
@@ -130,6 +129,7 @@ void main(){
    //while(true){
      // prender(x);
    //}
+   snake mcc[8][8];
    iniciar(mcc);
    imprimir(mcc);
    printf("%d\n",D5);
